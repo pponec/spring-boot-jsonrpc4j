@@ -4,7 +4,6 @@ import com.googlecode.jsonrpc4j.spring.JsonServiceExporter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import sub.optimal.jsonrpc.api.MyService;
 import sub.optimal.jsonrpc.impl.MyServiceImpl;
 
 @SpringBootApplication
@@ -19,7 +18,7 @@ public class RpcApplication {
         return new MyServiceImpl();
     }
 
-    @Bean(name = "/rpc/myservice")
+    @Bean(name = MyService.ENDPOINT)
     public JsonServiceExporter jsonServiceExporter() {
         JsonServiceExporter exporter = new JsonServiceExporter();
         exporter.setService(myService());
